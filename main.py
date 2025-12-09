@@ -8,10 +8,9 @@ from keep_alive import keep_alive
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
-# --- CONFIG .ENV ---
 CHANNEL_TARGET_ID = int(os.getenv('CHANNEL_ID_TARGET'))
 
-# ID Role
+
 ID_ROLE_MEMBER = int(os.getenv('ROLE_ID_MEMBER'))
 ID_ROLE_ROBLOX = int(os.getenv('ROLE_ID_ROBLOX'))
 ID_ROLE_VALORANT = int(os.getenv('ROLE_ID_VALORANT'))
@@ -20,7 +19,7 @@ EMOJI_MEMBER = int(os.getenv('EMOJI_ID_MEMBER'))
 EMOJI_ROBLOX = int(os.getenv('EMOJI_ID_ROBLOX'))
 EMOJI_VALORANT = int(os.getenv('EMOJI_ID_VALORANT'))
 
-# Link Gambar
+
 BANNER_URL = os.getenv('LINK_BANNER')
 THUMB_URL = os.getenv('LINK_THUMBNAIL')
 
@@ -88,7 +87,6 @@ class ModernRoleView(View):
 @bot.event
 async def on_ready():
     print(f'Bot {bot.user.name} sudah online dengan tampilan Modern!')
-    # Load View supaya tombol tetap jalan kalau bot restart
     bot.add_view(ModernRoleView())
 
 @bot.command()
@@ -120,6 +118,6 @@ async def setup(ctx):
 
     await target_channel.send(embed=embed, view=ModernRoleView())
     await ctx.send(f"Setup GUI terkirim ke {target_channel.mention}")
-keep_alive()  # <-- Ini yang bikin web server nyala
+keep_alive() 
 bot.run(TOKEN)
 bot.run(TOKEN)
