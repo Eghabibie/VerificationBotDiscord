@@ -3,6 +3,7 @@ import os
 from discord.ext import commands
 from dotenv import load_dotenv
 from discord.ui import Button, View
+from keep_alive import keep_alive
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -119,5 +120,6 @@ async def setup(ctx):
 
     await target_channel.send(embed=embed, view=ModernRoleView())
     await ctx.send(f"Setup GUI terkirim ke {target_channel.mention}")
-
+keep_alive()  # <-- Ini yang bikin web server nyala
+bot.run(TOKEN)
 bot.run(TOKEN)
